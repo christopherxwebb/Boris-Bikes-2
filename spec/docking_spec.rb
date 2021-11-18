@@ -29,16 +29,8 @@ describe DockingStation do
 
   it "should not release a bike when none are available" do
     docking_station = DockingStation.new
-    expect { docking_station.release_bike }.to raise_error
+    expect { docking_station.release_bike }.to raise_error "There are no bikes available"
   end
-
- # it "should not add a bike if a bike is already docked" do
- #   docking_station = DockingStation.new
- #   bike = Bike.new
- #   docking_station.dock(bike)
- #   bike2 = Bike.new
- #   expect { docking_station.dock(bike2) }.to raise_error
- # end
 
   it "raise an error when docking station is full" do
     docking_station = DockingStation.new
