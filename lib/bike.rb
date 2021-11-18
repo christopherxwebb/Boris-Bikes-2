@@ -1,9 +1,7 @@
-class Bike
-  #def initialize(bike)
-  #  @bike = bike
-  #end    
+class Bike  
 
   def working?
     true
   end
+  
 end
