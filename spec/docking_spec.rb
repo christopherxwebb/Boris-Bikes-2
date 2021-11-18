@@ -32,14 +32,6 @@ describe DockingStation do
     expect { docking_station.release_bike }.to raise_error
   end
 
- # it "should not add a bike if a bike is already docked" do
- #   docking_station = DockingStation.new
- #   bike = Bike.new
- #   docking_station.dock(bike)
- #   bike2 = Bike.new
- #   expect { docking_station.dock(bike2) }.to raise_error
- # end
-
   it "raise an error when docking station is full" do
     docking_station = DockingStation.new
     20.times { docking_station.dock Bike.new }
@@ -47,3 +39,4 @@ describe DockingStation do
   end
 
 end
+falnkfnslfakln
