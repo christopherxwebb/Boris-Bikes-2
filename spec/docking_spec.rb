@@ -32,15 +32,15 @@ describe DockingStation do
     expect { docking_station.release_bike }.to raise_error
   end
 
-  it "raise an error when docking station is full" do
+  it "raise an error when you try to dock a bike in a full station" do
     docking_station = DockingStation.new
-    20.times { docking_station.dock Bike.new }
+    DockingStation::DEFAULT_CAPACITY.times { docking_station.dock Bike.new } 
     expect { docking_station.dock Bike.new }.to raise_error 'Docking station full'
   end
 
   it "if station is full we get true from the full? method" do
     docking_station = DockingStation.new
-    20. times { docking_station.dock Bike.new }
+    DockingStation::DEFAULT_CAPACITY.times { docking_station.dock Bike.new }
     expect(docking_station.full?).to eq true
   end
 
@@ -48,4 +48,5 @@ describe DockingStation do
    docking_station = DockingStation.new
    expect(docking_station.empty?).to eq true
   end
+
 end
