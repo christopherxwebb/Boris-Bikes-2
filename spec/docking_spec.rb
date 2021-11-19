@@ -49,4 +49,12 @@ describe DockingStation do
    expect(docking_station.empty?).to eq true
   end
 
+  it "allow a user to set larger capacity when necessary" do
+    expect(DockingStation.new(50)).to be_an_instance_of(DockingStation)
+  end
+
+  it "if no desired capacity is provided then assigns default capacity (20)" do
+    expect(DockingStation.new()).to be_an_instance_of(DockingStation)
+  end
+
 end
