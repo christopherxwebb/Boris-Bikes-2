@@ -5,16 +5,36 @@ class DockingStation
 
   def initialize
     @bikes = []
+    self.empty?
+    self.full?
   end
 
   def release_bike
-    fail "There are no bikes available" if @bikes.empty?
+    fail "There are no bikes available" if empty?
     @bikes.pop
   end
 
   def dock(bike)
-    fail "Docking station full" if @bikes.count >= 20
+    fail "Docking station full" if full?
     @bikes.push(bike)
+  end
+
+  #private
+
+  def full?
+    if @bikes.count >= 20
+      true
+    else
+      false
+    end
+  end
+
+  def empty?
+    if @bikes.count == 0
+      true
+    else
+      false
+    end
   end
 
 end
