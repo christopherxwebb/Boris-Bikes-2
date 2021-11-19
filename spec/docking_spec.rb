@@ -49,12 +49,33 @@ describe DockingStation do
    expect(docking_station.empty?).to eq true
   end
 
-  it "allow a user to set larger capacity when necessary" do
+  it "allow a maintainer to set larger capacity when necessary" do
     expect(DockingStation.new(50)).to be_an_instance_of(DockingStation)
   end
 
   it "if no desired capacity is provided then assigns default capacity (20)" do
     expect(DockingStation.new()).to be_an_instance_of(DockingStation)
+  end
+
+  it "allows a rider to return a working bike" do
+    docking_station = DockingStation.new
+    bike = Bike.new
+    docking_station.dock(bike)
+    expect(docking_station.bikes).to include bike
+  end
+
+  it "does not allow a rider to be given a broken bike" do
+    docking_station = DockingStation.new
+    bike = Bike.new
+    docking_station.dock(bike, "BROKEN")
+    expect { docking_station.release_bike }.to raise_error
+  end
+
+  it "allows a rider to return a broken bike" do
+    docking_station = DockingStation.new
+    bike = Bike.new
+    docking_station.dock(bike, "report")
+    expect(docking_station.broken_bikes).to include bike
   end
 
 end
